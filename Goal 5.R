@@ -31,7 +31,8 @@ Final2 <- Final %>% mutate(mean_unemp = (Unemp2016 + Unemp2015 + Unemp2014) / 3)
 Final22=Final2 %>% group_by(State) %>% summarize(mean_unemp = mean(mean_unemp))%>% 
   arrange(mean_unemp)
 ##
-Final_V = Final[!is.na(Final$Votes),]
+Final_1 = Final[!is.na(Final$Votes),]
+Final_V =Final_1%>%select(-c(State2))
 Votes = Final_V %>% group_by(Party) %>% summarize(total_votes = sum(Votes))
 
 ##
